@@ -1,4 +1,4 @@
-result = None
+result = 0
 operand = None
 operator = None
 wait_for_number = True
@@ -9,17 +9,34 @@ while True:
      operand = int(operand)  
   except Exception:
     print("Введений вами символ - це не число!")   
-  else: 
-   while True: 
-    operator = input("Введіть знак +, -, * або /: ")  
-    if operator == "+" or operator == "-" or operator == "*" or operator == "/":
-      print(operator)
+
+  else:      
+    while True:
+     operator = input("Знак: ")    
+     if operator == '+':
+      result += operand    
+      print(result)
       break
-    elif operator == "=":
+     elif operator == '-':
+      result -= operand
+      print(result)
       break
-    else:
-      print("Ви ввели не вірний знак!")
+     elif operator == '*':
+      result *= operand
+      print(result)
+      break
+     elif operator == '/':
+       if operand != 0:
+          result /= int(operand)
+          print(result)
+          break
+       else:
+          print("Ділення на нуль!")
+     elif operator == '=':
+        print(result)
+        break 
+     else:
+      print("Error!")   
   finally:
-    if operand == "=" or operator == "=":      
-      print("Ваш результат: ")
-      break    
+    if operand == "=" or operator == "=":    
+      break        
